@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += serialport
+QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,7 +28,8 @@ SOURCES += \
     mvp/mainwindow/mainmodel.cpp \
     data/sharedpreferences/sharedpreferences.cpp \
     conf/config.cpp \
-    conf/lang.cpp
+    conf/lang.cpp \
+    mvp/mainwindow/charts/autochart.cpp
 
 HEADERS += \
     conf/lang.h \
@@ -38,7 +40,8 @@ HEADERS += \
     mvp/mainwindow/maincontract.h \
     mvp/mainwindow/mainmodel.h \
     data/sharedpreferences/sharedpreferences.h \
-    conf/config.h
+    conf/config.h \
+    mvp/mainwindow/charts/autochart.h
 
 FORMS += \
     mvp/mainwindow/mainwindow.ui
