@@ -11,6 +11,10 @@ public:
 
 private:
     SharedPreferences* sp = SharedPreferences::getInstance();
+
+    // Model interface
+public:
+    uint32_t getConfigedBaudRate();
 };
 
 #endif // MAINMODEL_H

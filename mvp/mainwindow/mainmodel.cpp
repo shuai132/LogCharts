@@ -4,12 +4,14 @@
 
 MainModel::MainModel()
 {
-    const char* initFlagKey = "inited";
-    const char* defaultBuateKey = "defaultBuate";
-
-    bool isInited = sp->contains(initFlagKey);
+    bool isInited = sp->contains(Config::InitedKey);
     if (!isInited) {
-        sp->setValue(initFlagKey, true);
-        sp->setValue(defaultBuateKey, Config::DefaultBuate);
+        sp->setValue(Config::InitedKey, true);
+        sp->setValue(Config::BaudRateKey, Config::DefaultBuate);
     }
+}
+
+uint32_t MainModel::getConfigedBaudRate()
+{
+    return sp->getValue(Config::BaudRateKey).toUInt();
 }

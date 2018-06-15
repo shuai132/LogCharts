@@ -1,5 +1,6 @@
 #include "mainpresenter.h"
 #include "mainmodel.h"
+#include "conf/config.h"
 #include <QDebug>
 
 MainPresenter::MainPresenter(MainContract::View* view)
@@ -7,7 +8,7 @@ MainPresenter::MainPresenter(MainContract::View* view)
 {
     this->model = new MainModel();
 
-    serialPort = new SerialPort(460800);
+    serialPort = new SerialPort(model->getConfigedBaudRate());
 
     connect(serialPort, SIGNAL(onConStateChanged(bool)), this, SLOT(onConStateChanged(bool)));
 }

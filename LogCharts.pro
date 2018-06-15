@@ -25,7 +25,9 @@ SOURCES += \
     mvp/mainwindow/mainwindow.cpp \
     mvp/mainwindow/mainpresenter.cpp \
     mvp/mainwindow/mainmodel.cpp \
-    data/sharedpreferences/sharedpreferences.cpp
+    data/sharedpreferences/sharedpreferences.cpp \
+    conf/config.cpp \
+    conf/lang.cpp
 
 HEADERS += \
     conf/lang.h \

@@ -3,10 +3,11 @@
 
 #include <QString>
 
-namespace Lang {
 typedef const QString LangType;
-LangType connected = "已连接";
-LangType notconnected = "未连接";
+
+namespace Lang {
+extern LangType connected;
+extern LangType notconnected;
 }
 
 #endif // LANG_H

@@ -4,7 +4,9 @@
 #include <cstdint>
 
 namespace Config {
-const uint32_t DefaultBuate = 460800u;
+extern const char* InitedKey;
+extern const char* BaudRateKey;
+extern const uint32_t DefaultBuate;
 }
 
 #endif // CONFIG_H

@@ -2,11 +2,12 @@
 #define MAINCONTRACT_H
 
 #include "../base/mvp.h"
-#include <QString>
+#include <cstdint>
 
 namespace MainContract {
     class Model : public MVP::Model {
     public:
+        virtual uint32_t getConfigedBaudRate() = 0;
     };
 
     class Presenter;

@@ -2,7 +2,7 @@
 
 SharedPreferences::SharedPreferences()
 {
-    settings = new QSettings("bk_name.ini", QSettings::IniFormat);
+    settings = new QSettings("config.ini", QSettings::IniFormat);
 }
 
 SharedPreferences *SharedPreferences::getInstance()
@@ -19,7 +19,7 @@ void SharedPreferences::setValue(const QString &key, const QVariant &value)
     settings->setValue(key, value);
 }
 
-QVariant SharedPreferences::getvalue(const QString &key, const QVariant &defaultValue) const
+QVariant SharedPreferences::getValue(const QString &key, const QVariant &defaultValue) const
 {
     return settings->value(key, defaultValue);
 }
