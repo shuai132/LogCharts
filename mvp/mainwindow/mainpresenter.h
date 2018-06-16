@@ -15,8 +15,12 @@ public:
     explicit MainPresenter(MainContract::View* view);
     ~MainPresenter();
 
+signals:
+    void drewValue(double value);
+
 private slots:
     void onConStateChanged(bool isConnected);
+    void onData(QByteArray byteArray);
 
 private:
     SerialPort* serialPort = nullptr;

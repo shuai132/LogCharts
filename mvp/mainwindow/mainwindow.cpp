@@ -37,3 +37,8 @@ void MainWindow::setConState(bool isConnected)
     ui->lbConState->setText(isConnected ? Lang::connected : Lang::notconnected);
 }
 
+AutoChart *MainWindow::getChart()
+{
+    return ui->autoChart;
+}
+

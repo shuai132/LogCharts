@@ -26,6 +26,7 @@ private:
     // View interface
 private:
     void setConState(bool isConnected) override;
+    AutoChart *getChart() override;
 };
 
 #endif // MAINWINDOW_H
