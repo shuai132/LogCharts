@@ -13,12 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setPresenter(new MainPresenter(this));
-
-    const int pointNum = 100;
-    ui->autoChart->setCachedLength(pointNum);
-    for (int i=0; i<pointNum; i++) {
-        ui->autoChart->addValue(sin((float)i / pointNum * 2 * M_PI * 2));
-    }
 }
 
 MainWindow::~MainWindow()

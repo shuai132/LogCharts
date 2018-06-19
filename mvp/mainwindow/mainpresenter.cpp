@@ -1,10 +1,9 @@
 #include "mainpresenter.h"
 #include "mainmodel.h"
 #include "conf/config.h"
+
 #include <QDebug>
 
-#include <thread>
-#include <cmath>
 MainPresenter::MainPresenter(MainContract::View* view)
     :Presenter(view)
 {
@@ -20,20 +19,17 @@ MainPresenter::MainPresenter(MainContract::View* view)
         this->view->getChart()->addValue(value);
     });
 
-    new std::thread([this]{
-        int i = 0;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        while (true) {
-            auto value = sin(i++ / 10.0);
-            emit drewValue(value);
-            std::this_thread::sleep_for(std::chrono::milliseconds(16));     // 60fps
-        }
+    cmdFIFO = new CmdFIFO("nc 192.168.3.196 6666");
+    cmdFIFO->setOnRecievedCallback([](byte* data, int len) {
+        qDebug()<<"here?";
+        qDebug()<<QString::fromUtf8((const char*)data)<<len;
     });
 }
 
 MainPresenter::~MainPresenter()
 {
     qDebug()<<"~MainPresenter";
+    delete cmdFIFO;
     delete serialPort;
 }
 

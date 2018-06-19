@@ -5,6 +5,8 @@
 #include "serialport/serialport.h"
 #include "mainwindow.h"
 #include "mainmodel.h"
+#include "cmdfifo/cmdfifo.h"
+
 #include <QObject>
 
 class MainPresenter : public QObject, public MainContract::Presenter
@@ -24,6 +26,7 @@ private slots:
 
 private:
     SerialPort* serialPort = nullptr;
+    CmdFIFO* cmdFIFO = nullptr;
 };
 
 #endif // MAINPRESENTER_H

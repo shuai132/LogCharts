@@ -29,7 +29,8 @@ SOURCES += \
     data/sharedpreferences/sharedpreferences.cpp \
     conf/config.cpp \
     conf/lang.cpp \
-    mvp/mainwindow/charts/autochart.cpp
+    mvp/mainwindow/charts/autochart.cpp \
+    cmdfifo/cmdfifo.cpp
 
 HEADERS += \
     conf/lang.h \
@@ -41,7 +42,8 @@ HEADERS += \
     mvp/mainwindow/mainmodel.h \
     data/sharedpreferences/sharedpreferences.h \
     conf/config.h \
-    mvp/mainwindow/charts/autochart.h
+    mvp/mainwindow/charts/autochart.h \
+    cmdfifo/cmdfifo.h
 
 FORMS += \
     mvp/mainwindow/mainwindow.ui
