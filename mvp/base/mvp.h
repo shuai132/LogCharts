@@ -1,6 +1,8 @@
 #ifndef MVP_H
 #define MVP_H
 
+#include <QString>
+
 namespace MVP {
     class Model {
     public:

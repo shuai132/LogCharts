@@ -5,8 +5,6 @@
 
 namespace Config {
 extern const char* InitedKey;
-extern const char* BaudRateKey;
-extern const uint32_t DefaultBuate;
 }
 
 #endif // CONFIG_H

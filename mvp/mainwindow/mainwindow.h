@@ -19,13 +19,13 @@ public:
     virtual void resizeEvent(QResizeEvent *event) override;
 
 private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
 
     // View interface
 private:
-    void setConState(bool isConnected) override;
     AutoChart *getChart() override;
 };
 

@@ -1,5 +1,4 @@
 QT       += core gui
-QT       += serialport
 QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -22,7 +21,6 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    serialport/serialport.cpp \
     mvp/mainwindow/mainwindow.cpp \
     mvp/mainwindow/mainpresenter.cpp \
     mvp/mainwindow/mainmodel.cpp \
@@ -34,7 +32,6 @@ SOURCES += \
 
 HEADERS += \
     conf/lang.h \
-    serialport/serialport.h \
     mvp/base/mvp.h \
     mvp/mainwindow/mainwindow.h \
     mvp/mainwindow/mainpresenter.h \

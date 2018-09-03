@@ -9,20 +9,8 @@ MainPresenter::MainPresenter(MainContract::View* view)
 {
     this->model = new MainModel();
 
-    serialPort = new SerialPort(model->getConfigedBaudRate());
-
-    connect(serialPort, SIGNAL(onConStateChanged(bool)), this, SLOT(onConStateChanged(bool)));
-
-    connect(serialPort, SIGNAL(onData(QByteArray)), this, SLOT(onData(QByteArray)));
-
     connect(this, &MainPresenter::drewValue, this, [this](double value) {
         this->view->getChart()->addValue(value);
-    });
-
-    cmdFIFO = new CmdFIFO("nc 192.168.3.196 6666");
-    cmdFIFO->setOnRecievedCallback([](byte* data, int len) {
-        qDebug()<<"here?";
-        qDebug()<<QString::fromUtf8((const char*)data)<<len;
     });
 }
 
@@ -30,15 +18,26 @@ MainPresenter::~MainPresenter()
 {
     qDebug()<<"~MainPresenter";
     delete cmdFIFO;
-    delete serialPort;
 }
 
-void MainPresenter::onConStateChanged(bool isConnected)
+void MainPresenter::execute(QString shellCmd)
 {
-    view->setConState(isConnected);
-}
-
-void MainPresenter::onData(QByteArray byteArray)
-{
-    qDebug()<<byteArray;
+    if (cmdFIFO != nullptr) {
+        delete cmdFIFO;
+    }
+    cmdFIFO = new CmdFIFO(shellCmd.toStdString());
+    cmdFIFO->setOnRecievedCallback([this](byte* data, int len) {
+        QString str = QString::fromUtf8((const char*)data, len - 1);
+        qDebug()<<str<<len;
+        bool flag = false;
+        double value = str.toDouble(&flag);
+        qDebug()<<"fffff"<<value<<flag;
+        if (flag) {
+            this->view->getChart()->addValue(value);
+            this->view->getChart()->repaint();
+        }
+        else {
+            qDebug()<<"can not convert "<<str<<" to double!";
+        }
+    });
 }

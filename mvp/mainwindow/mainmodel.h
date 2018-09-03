@@ -14,7 +14,6 @@ private:
 
     // Model interface
 public:
-    uint32_t getConfigedBaudRate();
 };
 
 #endif // MAINMODEL_H

@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "conf/lang.h"
 #include "mainpresenter.h"
-#include <cmath>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -26,13 +25,12 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     qDebug()<<event;
 }
 
-void MainWindow::setConState(bool isConnected)
-{
-    ui->lbConState->setText(isConnected ? Lang::connected : Lang::notconnected);
-}
-
 AutoChart *MainWindow::getChart()
 {
     return ui->autoChart;
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    presenter->execute(ui->inputCmd->toPlainText());
+}
